@@ -73,7 +73,7 @@ jobs:
           for size in small medium big; do
             image_path="static/images/${size}_$item_number.png"
             if [ -e "$image_path" ]; then
-              if rm "$image_path"; then
+              if git rm "$image_path"; then
                 echo "Removed $image_path successfully."
               else
                 echo "Error: could not remove $image_path"
@@ -86,12 +86,6 @@ jobs:
       - name: Commit changes
         run: |
           git add $xml_path
-          for size in small medium big; do
-            image_path="static/images/${size}_${{ inputs.item_number }}.png"
-            if [ ! -e "$image_path" ]; then
-              git rm "$image_path"
-            fi
-          done
           
           if [[ $(git diff --cached --name-only) ]]; then
             git commit -m "Remove listing: ${{ github.event.inputs.item_number }}"
