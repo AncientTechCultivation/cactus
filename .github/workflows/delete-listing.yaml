@@ -62,10 +62,10 @@ jobs:
           item_number="${{ inputs.item_number }}"
 
           if xmlstarlet ed -d "/listings/listing[itemNumber='$item_number']" $xml_path > $temp_path; then
-              mv $temp_path $xml_path
+            mv $temp_path $xml_path
           else
-              echo "Error updating the XML file."
-              exit 1
+            echo "Error updating the XML file."
+            exit 1
           fi
 
           # delete associated listing images
@@ -86,9 +86,12 @@ jobs:
       - name: Commit changes
         run: |
           git add $xml_path
-          git add static/images/small_${{ inputs.item_number }}.png
-          git add static/images/medium_${{ inputs.item_number }}.png
-          git add static/images/big_${{ inputs.item_number }}.png
+          for size in small medium big; do
+            image_path="static/images/${size}_${item_number}.png"
+            if [ ! -e "$image_path" ]; then
+              git rm "$image_path"
+            fi
+          done
           
           if [[ $(git diff --cached --name-only) ]]; then
             git commit -m "Remove listing: ${{ github.event.inputs.item_number }}"

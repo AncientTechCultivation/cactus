@@ -67,10 +67,10 @@ jobs:
           is_sold="${{ inputs.is_sold }}"
 
           if xmlstarlet ed -u "/listings/listing[itemNumber='$item_number']/isSold" -v $is_sold $xml_path > $temp_path; then
-              mv $temp_path $xml_path
+            mv $temp_path $xml_path
           else
-              echo "Error updating the XML file."
-              exit 1
+            echo "Error updating the XML file."
+            exit 1
           fi
 
       - name: Commit changes

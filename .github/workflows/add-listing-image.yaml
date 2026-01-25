@@ -69,9 +69,9 @@ jobs:
           item_number="${{ github.event.issue.title }}"
           body='${{ github.event.issue.body }}'
           if [[ "$body" =~ src=\"([^\"]+)\" ]]; then
-              img_url="${BASH_REMATCH[1]}"
+            img_url="${BASH_REMATCH[1]}"
           elif [[ "$body" =~ \[.*\]\((https?://[^\)]+) ]]; then
-              img_url="${BASH_REMATCH[1]}"
+            img_url="${BASH_REMATCH[1]}"
           else
             echo "Error: No image URL found in the issue body."
             echo "Debugging: ${BASH_REMATCH[1]}"
@@ -134,20 +134,20 @@ jobs:
           if xmlstarlet sel -t -m "/listings/listing[itemNumber='$item_number']/imageSmall" -v "." $xml_path | grep -q .; then
             # element already exists, update it with new value
             if xmlstarlet ed -u "/listings/listing[itemNumber='$item_number']/imageSmall" -v "$image_small" $xml_path > $temp_path; then
-                mv $temp_path $xml_path
-                echo "Updated imageSmall successfully"
+              mv $temp_path $xml_path
+              echo "Updated imageSmall successfully"
             else
-                echo "Error updating the XML file."
-                exit 1
+              echo "Error updating the XML file."
+              exit 1
             fi
           else
             # element does not exist, insert new subnode
             if xmlstarlet ed -s "/listings/listing[itemNumber='$item_number']" -t elem -n "imageSmall" -v "$image_small" $xml_path > $temp_path; then
-                mv $temp_path $xml_path
-                echo "Inserted imageSmall successfully"
+              mv $temp_path $xml_path
+              echo "Inserted imageSmall successfully"
             else
-                echo "Error updating the XML file."
-                exit 1
+              echo "Error updating the XML file."
+              exit 1
             fi
           fi
 
@@ -155,20 +155,20 @@ jobs:
           if xmlstarlet sel -t -m "/listings/listing[itemNumber='$item_number']/imageMedium" -v "." $xml_path | grep -q .; then
             # element already exists, update it with new value
             if xmlstarlet ed -u "/listings/listing[itemNumber='$item_number']/imageMedium" -v "$image_medium" $xml_path > $temp_path; then
-                mv $temp_path $xml_path
-                echo "Updated imageMedium successfully"
+              mv $temp_path $xml_path
+              echo "Updated imageMedium successfully"
             else
-                echo "Error updating the XML file."
-                exit 1
+              echo "Error updating the XML file."
+              exit 1
             fi
           else
             # element does not exist, insert new subnode
             if xmlstarlet ed -s "/listings/listing[itemNumber='$item_number']" -t elem -n "imageMedium" -v "$image_medium" $xml_path > $temp_path; then
-                mv $temp_path $xml_path
-                echo "Inserted imageMedium successfully"
+              mv $temp_path $xml_path
+              echo "Inserted imageMedium successfully"
             else
-                echo "Error updating the XML file."
-                exit 1
+              echo "Error updating the XML file."
+              exit 1
             fi
           fi
 
@@ -176,20 +176,20 @@ jobs:
           if xmlstarlet sel -t -m "/listings/listing[itemNumber='$item_number']/imageBig" -v "." $xml_path | grep -q .; then
             # element already exists, update it with new value
             if xmlstarlet ed -u "/listings/listing[itemNumber='$item_number']/imageBig" -v "$image_big" $xml_path > $temp_path; then
-                mv $temp_path $xml_path
-                echo "Updated imageBig successfully"
+              mv $temp_path $xml_path
+              echo "Updated imageBig successfully"
             else
-                echo "Error updating the XML file."
-                exit 1
+              echo "Error updating the XML file."
+              exit 1
             fi
           else
             # element does not exist, insert new subnode
             if xmlstarlet ed -s "/listings/listing[itemNumber='$item_number']" -t elem -n "imageBig" -v "$image_big" $xml_path > $temp_path; then
-                mv $temp_path $xml_path
-                echo "Inserted imageBig successfully"
+              mv $temp_path $xml_path
+              echo "Inserted imageBig successfully"
             else
-                echo "Error updating the XML file."
-                exit 1
+              echo "Error updating the XML file."
+              exit 1
             fi
           fi
 
