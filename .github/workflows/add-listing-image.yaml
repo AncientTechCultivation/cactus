@@ -1,0 +1,220 @@
+name: add-listing-image
+on:
+  issues:
+    types: [opened]
+env:
+  xml_path: static/xml/listings.xml
+  temp_path: static/xml/temp.xml
+jobs:
+  update_xml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Queue workflow
+        uses: ahmadnassri/action-workflow-queue@v1
+
+      - name: Validate inputs
+        run: |
+          validate_input() {
+            local input="$1"
+            local name="$2"
+            if [[ "$input" =~ [\&\<\>\"\'\\] ]]; then
+              echo "Error: '${name}' must not include special characters."
+              exit 1
+            fi
+          }
+
+          item_number="${{ github.event.issue.title }}"
+
+          validate_input "$item_number" "item_number"
+
+      - name: Validate token
+        run: |
+          if [ -z "${{ secrets.ACCESS_TOKEN }}" ]; then
+              echo "Error: No GitHub access token provided."
+              exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Verify XML path
+        run: |
+          echo "XML Path: $xml_path"
+          if [[ -f $xml_path ]]; then
+            echo "$xml_path exists."
+          else
+            echo "$xml_path does not exist."
+            echo "Listing files in static/xml directory:"
+            ls -R static/xml
+          fi
+
+      - name: Pull latest changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/ambrose-s/cactus-website.git
+          git pull origin main
+      
+      - name: Install XMLstarlet
+        run: |
+          sudo apt-get update
+          sudo apt-get install xmlstarlet -y
+
+      - name: Install ImageMagick
+        run: |
+          sudo apt-get install imagemagick -y
+
+      - name: Update XML listing
+        run: |
+          item_number="${{ github.event.issue.title }}"
+          body='${{ github.event.issue.body }}'
+          if [[ "$body" =~ src=\"([^\"]+)\" ]]; then
+              img_url="${BASH_REMATCH[1]}"
+          elif [[ "$body" =~ \[.*\]\((https?://[^\)]+) ]]; then
+              img_url="${BASH_REMATCH[1]}"
+          else
+            echo "Error: No image URL found in the issue body."
+            echo "Debugging: ${BASH_REMATCH[1]}"
+            exit 1
+          fi
+
+
+          if [ -z "$img_url" ]; then
+            echo "Error: No image URL found in the issue body."
+            exit 1
+          fi
+
+          # create images to embed
+
+          if ! curl -L -H "Authorization: token ${{ secrets.ACCESS_TOKEN }}" "$img_url" -o "static/images/small_$item_number.png"; then
+            echo "Error: Failed to download image from $img_url."
+            exit 1
+          fi
+
+          # Check if the file was created
+          if [ ! -s "static/images/small_$item_number.png" ]; then
+            echo "Error: Image file was not created."
+            exit 1
+          fi
+
+          cp "static/images/small_$item_number.png" "static/images/medium_$item_number.png"
+          if [ ! -f "static/images/medium_$item_number.png" ]; then
+            echo "Error: Failed to create medium image."
+            exit 1
+          fi
+
+          cp "static/images/small_$item_number.png" "static/images/big_$item_number.png"
+          if [ ! -f "static/images/big_$item_number.png" ]; then
+            echo "Error: Failed to create big image."
+            exit 1
+          fi
+
+          image_small="static/images/small_$item_number.png"
+          image_medium="static/images/medium_$item_number.png"
+          image_big="static/images/big_$item_number.png"
+
+          if ! mogrify -path "static/images" -resize 640x640 "$image_small"; then
+            echo "Error: Failed to resize image to small size."
+            exit 1
+          fi
+
+          if ! mogrify -path "static/images" -resize 1024x1024 "$image_medium"; then
+            echo "Error: Failed to resize image to medium size."
+            exit 1
+          fi
+
+          if ! mogrify -path "static/images" -resize 1920x1920 "$image_big"; then
+            echo "Error: Failed to resize image to big size."
+            exit 1
+          fi
+
+          # append or replace images on listing
+
+          # image small
+          if xmlstarlet sel -t -m "/listings/listing[itemNumber='$item_number']/imageSmall" -v "." $xml_path | grep -q .; then
+            # element already exists, update it with new value
+            if xmlstarlet ed -u "/listings/listing[itemNumber='$item_number']/imageSmall" -v "$image_small" $xml_path > $temp_path; then
+                mv $temp_path $xml_path
+                echo "Updated imageSmall successfully"
+            else
+                echo "Error updating the XML file."
+                exit 1
+            fi
+          else
+            # element does not exist, insert new subnode
+            if xmlstarlet ed -s "/listings/listing[itemNumber='$item_number']" -t elem -n "imageSmall" -v "$image_small" $xml_path > $temp_path; then
+                mv $temp_path $xml_path
+                echo "Inserted imageSmall successfully"
+            else
+                echo "Error updating the XML file."
+                exit 1
+            fi
+          fi
+
+          # image medium
+          if xmlstarlet sel -t -m "/listings/listing[itemNumber='$item_number']/imageMedium" -v "." $xml_path | grep -q .; then
+            # element already exists, update it with new value
+            if xmlstarlet ed -u "/listings/listing[itemNumber='$item_number']/imageMedium" -v "$image_medium" $xml_path > $temp_path; then
+                mv $temp_path $xml_path
+                echo "Updated imageMedium successfully"
+            else
+                echo "Error updating the XML file."
+                exit 1
+            fi
+          else
+            # element does not exist, insert new subnode
+            if xmlstarlet ed -s "/listings/listing[itemNumber='$item_number']" -t elem -n "imageMedium" -v "$image_medium" $xml_path > $temp_path; then
+                mv $temp_path $xml_path
+                echo "Inserted imageMedium successfully"
+            else
+                echo "Error updating the XML file."
+                exit 1
+            fi
+          fi
+
+          # image big
+          if xmlstarlet sel -t -m "/listings/listing[itemNumber='$item_number']/imageBig" -v "." $xml_path | grep -q .; then
+            # element already exists, update it with new value
+            if xmlstarlet ed -u "/listings/listing[itemNumber='$item_number']/imageBig" -v "$image_big" $xml_path > $temp_path; then
+                mv $temp_path $xml_path
+                echo "Updated imageBig successfully"
+            else
+                echo "Error updating the XML file."
+                exit 1
+            fi
+          else
+            # element does not exist, insert new subnode
+            if xmlstarlet ed -s "/listings/listing[itemNumber='$item_number']" -t elem -n "imageBig" -v "$image_big" $xml_path > $temp_path; then
+                mv $temp_path $xml_path
+                echo "Inserted imageBig successfully"
+            else
+                echo "Error updating the XML file."
+                exit 1
+            fi
+          fi
+
+      - name: Commit changes
+        run: |
+          git add static/images/* $xml_path
+          if [[ $(git diff --cached --name-only) ]]; then
+            git commit -m "Add image to listing: ${{ github.event.inputs.item_number }}"
+            # Attempt to push changes
+            if ! git push; then
+              echo "Push failed, trying to pull changes first"
+              
+              # Configure pull strategy to merge
+              git config pull.rebase false
+              git pull origin main || {
+                echo "Failed to pull changes from remote."
+                exit 1
+              }
+              
+              # Try pushing again after pulling
+              if ! git push; then
+                echo "Push failed again after pulling changes."
+                exit 1
+              fi
+            fi
+          else
+            echo "No changes to commit."
+          fi

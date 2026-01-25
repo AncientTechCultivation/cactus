@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<!--
+    to view this webpage, run a local python server:
+    open this project in an integrated terminal,
+    > python3 -m http.server 8000
+    use the url:
+    http://localhost:8000/index.html
+
+    or, alternatively, use the url: 
+    https://ambrose-s.github.io/cactus-website/
+
+    warm wishes,
+    ambrose sturgill
+-->
+
+<head>
+    <title>Ancient Tech</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Shop san pedro cactus here" />
+    <meta name="keywords" content="Trichocereus, Pachanoi, Bridgesii, Peruvianus, San Pedro, Cactus, Variegated, Crested, Seedlings" />
+    <link href="static/css/normalize.css"
+          type="text/css" rel="stylesheet" />
+    <link href="static/css/main.css"
+          type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+            <li> <a href="#seedlings">Seedlings</a> / </li>
+            <li> <a href="#clones">Clones</a> / </li>
+            <li> <a href="#mutated">Crested-Mutated</a> / </li>
+            <li> <a href="#other">Other Product</a>  / </li>
+            <li> <a href="#sold">Sold</a> / </li>
+            <li> <a href="#order_info">Order Info</a> / </li>
+            <li> <a href="#about">About Us</a> / </li>
+            <li> <a href="#footer">Contact</a> </li>
+            </ul>
+        </nav>
+
+        <p> You receive exact cactus shown. </p>
+    </header>
+
+    <main>
+        <section id="seedlings">
+            <h1> Seedlings </h1>
+            <div class="grid">
+            </div>
+        </section>
+
+        <section id="clones">
+            <h1> Clones </h1>
+            <div class="grid"></div>
+        </section>
+
+        <section id="mutated">
+            <h1> Crested and Mutated </h1>
+            <div class="grid"></div>
+        </section>
+
+        <section id="other">
+            <h1> Other Product </h1>
+            <div class="grid"></div>
+        </section>
+
+        <section id="sold">
+            <h1> Sold </h1>
+            <div class="grid"></div>
+        </section>
+
+        <section id="order_info">
+            <h1> Order Information </h1>
+
+            <div class="order_info_contents">
+            <h2> To place an Order: </h2>
+            <p> Email the <span id="bold">item numbers</span> of each item being ordered. <br />
+                Please include your <span id="bold">name</span>, <span id="bold">ship-to address</span> and <span id="bold">payment method</span>: Cash, Venmo, Cashapp. </p>
+            </div>
+
+            <div class="order_info_contents">
+            <h2> Shipping: </h2>
+            <p> Orders will be shipped USPS Ground, unless UPS is cheaper. <br />
+                Faster shipping options are available at buyers request. </p>
+            </div>
+        </section>
+
+        <section id="about">
+            <h1> About Us </h1>
+            <div id="about_contents">
+                <img src="static/images/missing_image.png" />
+                <p> We are a small cactus nursery located in coastal Humboldt County, California in zone 9b. <br /> <br />
+                    We love growing cactus, food and other plants with organic inputs and have doing doing so for a few decades. <br /> <br />
+                    We are happy to offer our wide collection of Trichocereus, other plants and seeds. <br /> <br />
+                    Thank you for your support. </p> 
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer">
+        <h1></h1>
+        <div id="footer_contents">
+            <ul>
+                <li> <h2>Contact</h2> </li>
+                <li><a href="mailto:ancienttechcultivation@gmail.com">ancienttechcultivation@gmail.com</a></li>
+            </ul>
+            <ul>
+                <li> <h2>Follow Us</h2> </li>
+                <li> <img src="static/images/instagram_icon.png" /> <a href="https://www.instagram.com/ancient_tech_/"> @Ancient_tech_ </a> </li>
+                <li> <img src="static/images/reddit_icon.png" /> <a href="https://www.reddit.com/user/Ancient_Tech_/"> u/Ancient_tech_ </a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+<script type="text/javascript">
+"use strict";
+
+    class Listing {
+        constructor(myNumber, myCategory, myDescription, myPrice, mySold, mySmallUrl, myMedUrl, myBigUrl) {
+            this.itemNumber = myNumber;
+            this.category = myCategory;
+            this.description = myDescription;
+            this.price = myPrice;
+            this.isSold = mySold;
+            this.imageSmall = mySmallUrl;
+            this.imageMedium = myMedUrl;
+            this.imageBig = myBigUrl;
+        }
+    }
+    /* For a listing to have responsive images, 
+       it requires imageUrl attributes for each resolution expected. 
+       change should be made in future iteration 
+       https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Responsive_images 
+       https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design*/
+
+    /* expects listings.xml to be stored locally 
+       and returns an XML document */
+    async function fetchListings() {
+        try {
+            const response = await fetch('static/xml/listings.xml');
+            if (!response.ok) {
+                throw new Error(`XML fetch error: ${response.status}`);
+            }
+            const xmlString = await response.text();
+            const parser = new DOMParser();
+            return parser.parseFromString(xmlString, "text/xml");
+
+        } catch (error) {
+            console.error("XML fetch or parse error: ", error);
+        }
+    }
+
+    /* expects an XML document
+       and returns an array of Listing instances */
+    function populateListings(xmlDocument) {
+        const listings = [];
+        const listingElements = xmlDocument.getElementsByTagName("listing");
+
+        for (const element of listingElements) {
+            const myNumber = element.getElementsByTagName("itemNumber")[0]?.textContent || "MISSING";
+            const myCategory = element.getElementsByTagName("category")[0]?.textContent || "uncategorized";
+            const myDescription = element.getElementsByTagName("description")[0]?.textContent || "Description coming soon.";
+            const myPrice = element.getElementsByTagName("price")[0]?.textContent || 0;
+            const mySold = element.getElementsByTagName("isSold")[0]?.textContent === "true" || false;
+            const mySmallUrl = element.getElementsByTagName("imageSmall")[0]?.textContent || "static/images/missing_image.png";
+            const myMedUrl = element.getElementsByTagName("imageMedium")[0]?.textContent || "static/images/missing_image.png";
+            const myBigUrl = element.getElementsByTagName("imageBig")[0]?.textContent || "static/images/missing_image.png";
+
+            const newListing = new Listing(myNumber, myCategory, myDescription, myPrice, mySold, mySmallUrl, myMedUrl, myBigUrl);
+            listings.push(newListing);
+        }
+
+        return listings.length > 0 ? listings : null;
+    }
+
+    /* expects listings.xml to be stored locally 
+       and returns an array of Listing instances */
+    async function getListingsArray() {
+        try {
+            const xmlDoc = await fetchListings();
+            if (!xmlDoc || xmlDoc.getElementsByTagName("listing").length === 0) {
+                console.error("No listings found in XML document");
+                return [];
+            }
+            const listings = populateListings(xmlDoc);
+            return listings;
+        }
+        catch (error) {
+            console.error("Error in getListingsArray: ", error);
+        }
+    }
+
+    /* expects an array of Listing instances
+       and populates DOM sections with listings in the form:
+            <div class="listing">
+                <p class="listing_number">`${listing.itemNumber}`</p>
+                <img src=`${listing.imageUrl}` class="listing_thumb" />
+                <p class="listing_description">`${listing.description}`</p>
+                <p class="listing_price">$`${listing.price}`</p>
+            </div> */
+    async function generateListingHtml(listings) {
+        for (const listing of listings) {
+            // create and place elements
+            const section = (listing.isSold === true) ? document.getElementById("sold") : document.getElementById(`${listing.category}`);
+            if (section) {
+                const grid = section.getElementsByClassName("grid")[0];
+                if (grid) {
+                    const listingDiv = document.createElement("div");
+                    listingDiv.setAttribute('class', 'listing');
+                    grid.appendChild(listingDiv);
+
+                    const listingNumber = document.createElement("p");
+                    listingNumber.setAttribute('class', 'listing_number');
+                    listingNumber.textContent = `${listing.itemNumber}`;
+                    listingDiv.appendChild(listingNumber);
+
+                    console.log()
+                    const listingImage = document.createElement("img");
+                    listingImage.setAttribute('class', 'listing_image');
+                    listingImage.setAttribute('src', `${listing.imageMedium}`);
+                    listingImage.setAttribute('srcset', `${listing.imageSmall} 640w, ${listing.imageMedium} 1024w, ${listing.imageBig} 1920w`);
+                    listingImage.setAttribute('size', '(width < 650px) 50vw, (width < 820px) 33vw, 25vw')
+                    listingDiv.appendChild(listingImage);
+
+                    const listingDescription = document.createElement("p");
+                    listingDescription.setAttribute('class', 'listing_description');
+                    listingDescription.textContent = `${listing.description}`;
+                    listingDiv.appendChild(listingDescription);
+
+                    const listingPriceContainer = document.createElement("div");
+                    listingPriceContainer.setAttribute('class', 'listing_price_container');
+                    listingDiv.appendChild(listingPriceContainer);
+
+                    if (listing.isSold === true) {
+                        const listingPriceCover = document.createElement("p");
+                        listingPriceCover.setAttribute('class', 'listing_price_cover');
+                        listingPriceCover.textContent = "SOLD";
+                        listingPriceContainer.appendChild(listingPriceCover);
+                    }
+
+                    const listingPrice = document.createElement("p");
+                    listingPrice.setAttribute('class', 'listing_price');
+                    const formatted_price = new Intl.NumberFormat("US", {style: "currency", currency: "USD", currencyDisplay: "narrowSymbol"}).format(`${listing.price}`);
+                    listingPrice.textContent = formatted_price;
+                    listingPriceContainer.appendChild(listingPrice);
+
+                } else {
+                    console.error("Error in generateListingHtml: Grid could not be found for listing: ", `${listing.itemNumber}`, " - ", `${listing.category}`);
+                } 
+            } else {
+                console.error("Error in generateListingHtml: Section could not be found for Listing: ", `${listing.itemNumber}`, " - ", `${listing.category}`);
+            }
+        }
+    }
+
+    /* updates the CSS variable --header-height
+       to contain the current the height of the header, 
+       including vertical padding and borders */
+    function storeHeaderHeight() {
+        const header = document.querySelector("header");
+        const height = header.offsetHeight;
+        const root = document.documentElement;
+        root.style.setProperty('--header-height', `${height}px`);
+    }
+
+    async function main() {
+        const listings = await getListingsArray();
+        generateListingHtml(listings);
+        storeHeaderHeight();
+    }
+
+    main();
+
+    window.addEventListener('resize', () => {
+        storeHeaderHeight();
+    });
+</script>
+
+</html>

@@ -1,0 +1,249 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --grey: #e0e0e0;
+  --link: #0000FF;
+  --red: #FF0000;
+
+  /* spacing */
+  --header-height: ;
+}
+
+* {
+  font: normal normal normal 15px serif;
+}
+
+@media screen and (width >= 820px) {
+  * {
+  font: normal normal normal 16px serif;
+  }
+}
+
+body {
+  padding: 10px;
+  padding-top: 0;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (width >= 650px) {
+  body {
+  padding: 15px;
+  padding-top: 0;
+  }
+}
+
+
+
+/* header */
+
+header {
+  z-index: 10;
+  position: sticky;
+  top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+header > * {
+  margin: 0;
+  padding: 5px;
+  background-color: var(--white);
+  border-bottom: 1px outset var(--black);
+  border-right: 1px outset var(--black);
+}
+
+header > p {
+  width: fit-content;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0;
+}
+
+nav a {
+  color: var(--link);
+}
+
+
+
+/* section */
+/* credit to Tsuneo Yoshioka and Erick Xenes for h1 line
+   https://stackoverflow.com/questions/5214127/ */
+
+section {
+  scroll-margin-top: var(--header-height);
+}
+
+h1 {
+  z-index: 0;
+  display: flex;
+  flex-direction: row;
+  font-size: medium;
+  padding-top: 15px;
+}
+
+h1:after{
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid;
+  margin: auto;
+}
+
+
+
+/* listings */
+
+.grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+@media screen and (width >= 650px) {
+  .grid {
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+
+@media screen and (width >= 820px) {
+  .grid {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+}
+
+.listing {
+  position: relative;
+  z-index: 5;
+  padding: 5px;
+}
+
+.listing p {
+  z-index: 7;
+  width: fit-content;
+  padding: 3px;
+  margin: 5px;
+  background-color: var(--white);
+  border-bottom: 1px outset var(--black);
+  border-right: 1px outset var(--black);
+}
+
+.listing_image {
+  z-index: 6;
+  width: 100%;
+  height: auto;
+}
+
+.listing_number {
+  position: absolute;
+}
+
+.listing .listing_description {
+  margin-top: 1px;
+}
+
+.listing_price_container {
+  position: relative;
+  width: min-content;
+}
+
+.listing_price_container .listing_price_cover {
+  z-index: 8;
+  position: absolute;
+  background-color: var(--red);
+  color: var(--white);
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  text-align: center;
+  top: 3px;
+  width: calc(100% - 8px) ;
+}
+
+
+
+/* order information */
+
+#bold {
+  font-weight: bold;
+}
+
+#order_info p {
+  padding: 10px;
+  padding-top: 0;
+  margin-bottom: 25px;
+  width: fit-content;
+  background-color: var(--white);
+  border-bottom: 1px outset var(--black);
+  border-right: 1px outset var(--black);
+}
+
+
+
+/* about */
+
+#about_contents {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: left;
+  gap: 15px;
+}
+
+#about_contents > * {
+  display: inline-block;
+}
+
+#about_contents > img {
+  max-width: 45%;
+}
+
+
+/* footer */
+
+#footer_contents {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 5px;
+  gap: 15px;
+}
+
+@media screen and (width >= 650px) {
+  #footer_contents {
+    flex-direction: row;
+    
+  }
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer ul li {
+  display: block;
+  padding: 0;
+}
+
+footer ul li h2 {
+  margin: 0;
+}
+
+footer ul li img {
+  height: 1em;
+  margin: 0;
+  display: inline;
+  vertical-align: bottom;
+}

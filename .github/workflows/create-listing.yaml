@@ -1,0 +1,127 @@
+name: create-listing
+on: 
+  workflow_dispatch:
+    inputs:
+      item_number:
+        required: true
+        type: string
+        description: item_number
+      category:
+        required: true
+        type: choice
+        options:
+          - 'seedlings'
+          - 'clones'
+          - 'mutated'
+          - 'other'
+      description:
+        required: true
+        type: string
+        description: description
+        default: 'Description coming soon.'
+      price:
+        required: true
+        type: number
+        description: price
+        default: 0
+      is_sold:
+        required: true
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+        default: 'false'
+env:
+  xml_path: static/xml/listings.xml
+  temp_path: static/xml/temp.xml
+jobs:
+  update_xml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Queue workflow
+        uses: ahmadnassri/action-workflow-queue@v1
+
+      - name: validate inputs
+        run: |
+          validate_input() {
+            local input="$1"
+            local name="$2"
+            if [[ "$input" =~ [\&\<\>\"\'\\] ]]; then
+              echo "Error: '${name}' must not include special characters."
+              exit 1
+            fi
+          }
+
+          item_number="${{ inputs.item_number }}"
+          description="${{ inputs.description }}"
+          price="${{ inputs.price }}"
+
+          validate_input "$item_number" "item_number"
+          validate_input "$description" "description"
+
+          if ! [[ "$price" =~ ^[0-9]+(\.[0-9]+)?$ ]]; then
+            echo "Error: 'price' must be a valid number."
+            exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Verify XML path
+        run: |
+          echo "XML Path: $xml_path"
+          if [[ -f $xml_path ]]; then
+            echo "$xml_path exists."
+          else
+            echo "$xml_path does not exist."
+            echo "Listing files in static/xml directory:"
+            ls -R static/xml
+          fi
+
+      - name: Pull latest changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/ambrose-s/cactus-website.git
+          git pull origin main
+      
+      - name: Install XMLstarlet
+        run: |
+          sudo apt-get update
+          sudo apt-get install xmlstarlet -y
+
+      - name: Update XML listing
+        run: |
+          xmlstarlet ed -s "/listings" -t elem -n "listing" -v " " $xml_path | \
+          xmlstarlet ed -s "/listings/listing[last()]" -t elem -n "itemNumber" -v "${{ github.event.inputs.item_number }}" | \
+          xmlstarlet ed -s "/listings/listing[last()]" -t elem -n "category" -v "${{ github.event.inputs.category }}" | \
+          xmlstarlet ed -s "/listings/listing[last()]" -t elem -n "description" -v "${{ github.event.inputs.description }}" | \
+          xmlstarlet ed -s "/listings/listing[last()]" -t elem -n "price" -v "${{ github.event.inputs.price }}" | \
+          xmlstarlet ed -s "/listings/listing[last()]" -t elem -n "isSold" -v "${{ github.event.inputs.is_sold }}" > $temp_path
+          mv $temp_path $xml_path
+          
+      - name: Commit changes
+        run: |
+          git add $xml_path
+          if [[ $(git diff --cached --name-only) ]]; then
+            git commit -m "Add new listing: ${{ github.event.inputs.item_number }}"
+            # Attempt to push changes
+            if ! git push; then
+              echo "Push failed, trying to pull changes first"
+              
+              # Configure pull strategy to merge
+              git config pull.rebase false
+              git pull origin main || {
+                echo "Failed to pull changes from remote."
+                exit 1
+              }
+              
+              # Try pushing again after pulling
+              if ! git push; then
+                echo "Push failed again after pulling changes."
+                exit 1
+              fi
+            fi
+          else
+            echo "No changes to commit."
+          fi

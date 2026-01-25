@@ -1,0 +1,114 @@
+name: delete-listing
+on: 
+  workflow_dispatch:
+    inputs:
+      item_number:
+        required: true
+        type: string
+        description: item_number
+env:
+  xml_path: static/xml/listings.xml
+  temp_path: static/xml/temp.xml
+jobs:
+  update_xml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Queue workflow
+        uses: ahmadnassri/action-workflow-queue@v1
+
+      - name: validate inputs
+        run: |
+          validate_input() {
+            local input="$1"
+            local name="$2"
+            if [[ "$input" =~ [\&\<\>\"\'\\] ]]; then
+              echo "Error: '${name}' must not include special characters."
+              exit 1
+            fi
+          }
+
+          item_number="${{ inputs.item_number }}"
+
+          validate_input "$item_number" "item_number"
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Verify XML path
+        run: |
+          echo "XML Path: $xml_path"
+          if [[ -f $xml_path ]]; then
+            echo "$xml_path exists."
+          else
+            echo "$xml_path does not exist."
+            echo "Listing files in static/xml directory:"
+            ls -R static/xml
+          fi
+
+      - name: Pull latest changes
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/ambrose-s/cactus-website.git
+          git pull origin main
+      
+      - name: Install XMLstarlet
+        run: |
+          sudo apt-get update
+          sudo apt-get install xmlstarlet -y
+
+      - name: Update XML listing
+        run: |
+          item_number="${{ inputs.item_number }}"
+
+          if xmlstarlet ed -d "/listings/listing[itemNumber='$item_number']" $xml_path > $temp_path; then
+              mv $temp_path $xml_path
+          else
+              echo "Error updating the XML file."
+              exit 1
+          fi
+
+          # delete associated listing images
+
+          for size in small medium big; do
+            image_path="static/images/${size}_$item_number.png"
+            if [ -e "$image_path" ]; then
+              if rm "$image_path"; then
+                echo "Removed $image_path successfully."
+              else
+                echo "Error: could not remove $image_path"
+              fi
+            else
+              echo "$image_path does not exist, skipping."
+            fi
+          done
+
+      - name: Commit changes
+        run: |
+          git add $xml_path
+          git add static/images/small_${{ inputs.item_number }}.png
+          git add static/images/medium_${{ inputs.item_number }}.png
+          git add static/images/big_${{ inputs.item_number }}.png
+          
+          if [[ $(git diff --cached --name-only) ]]; then
+            git commit -m "Remove listing: ${{ github.event.inputs.item_number }}"
+            # Attempt to push changes
+            if ! git push; then
+              echo "Push failed, trying to pull changes first"
+              
+              # Configure pull strategy to merge
+              git config pull.rebase false
+              git pull origin main || {
+                echo "Failed to pull changes from remote."
+                exit 1
+              }
+              
+              # Try pushing again after pulling
+              if ! git push; then
+                echo "Push failed again after pulling changes."
+                exit 1
+              fi
+            fi
+          else
+            echo "No changes to commit."
+          fi

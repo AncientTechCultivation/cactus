@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- listing element's valid values:
+* category
+    seedlings
+    clones
+    mutated
+    about
+* isSold
+    false
+    true
+* imageUrl
+    static/images/...
+ -->
+<listings>
+  <listing>
+    <itemNumber>1021</itemNumber>
+    <category>seedlings</category>
+    <description>Huancambaba X Landfill. 1.5-2 inches tall. Started indoors under LED lighting. Organic inputs.</description>
+    <price>2</price>
+    <isSold>false</isSold>
+    <imageSmall>static/images/xtratest640.jpg</imageSmall>
+    <imageMedium>static/images/xtratest1024.jpg</imageMedium>
+    <imageBig>static/images/xtratest1920.jpg</imageBig>
+  </listing>
+  <listing>
+    <itemNumber>1033</itemNumber>
+    <category>clones</category>
+    <description>Huancambaba X Landfill. 1.5-2 inches tall. Started indoors under LED lighting. Organic inputs.</description>
+    <price>2</price>
+    <isSold>true</isSold>
+    <imageSmall>static/images/xtratest640.jpg</imageSmall>
+    <imageMedium>static/images/xtratest1024.jpg</imageMedium>
+    <imageBig>static/images/xtratest1920.jpg</imageBig>
+  </listing>
+  <listing>
+    <itemNumber>1034</itemNumber>
+    <category>clones</category>
+    <description>Huancambaba X Landfill. 1.5-2 inches tall. Started indoors under LED lighting. Organic inputs.</description>
+    <price>2</price>
+    <isSold>false</isSold>
+    <imageSmall>static/images/xtratest640.jpg</imageSmall>
+    <imageMedium>static/images/xtratest1024.jpg</imageMedium>
+    <imageBig>static/images/xtratest1920.jpg</imageBig>
+  </listing>
+  <listing>
+    <itemNumber>0000</itemNumber>
+    <category>seedlings</category>
+    <description>Test.</description>
+    <price>4.5</price>
+    <isSold>false</isSold>
+  </listing>
+  <listing>
+    <itemNumber/>
+    <category>other</category>
+    <description/>
+    <price>a</price>
+    <isSold>false</isSold>
+  </listing>
+  <listing>
+    <itemNumber>0001</itemNumber>
+    <category>seedlings</category>
+    <description/>
+    <price>0</price>
+    <isSold>true</isSold>
+    <imageSmall>static/images/small_0001.png</imageSmall>
+    <imageMedium>static/images/medium_0001.png</imageMedium>
+    <imageBig>static/images/big_0001.png</imageBig>
+  </listing>
+  <listing>
+    <itemNumber>0005</itemNumber>
+    <category>seedlings</category>
+    <description>Description coming soon.</description>
+    <price>0</price>
+    <isSold>true</isSold>
+    <imageSmall>static/images/small_0005.png</imageSmall>
+    <imageMedium>static/images/medium_0005.png</imageMedium>
+    <imageBig>static/images/big_0005.png</imageBig>
+  </listing>
+</listings>
