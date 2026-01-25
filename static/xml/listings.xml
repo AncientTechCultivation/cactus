@@ -43,13 +43,6 @@
     <imageBig>static/images/xtratest1920.jpg</imageBig>
   </listing>
   <listing>
-    <itemNumber>0000</itemNumber>
-    <category>seedlings</category>
-    <description>Test.</description>
-    <price>4.5</price>
-    <isSold>false</isSold>
-  </listing>
-  <listing>
     <itemNumber/>
     <category>other</category>
     <description/>
