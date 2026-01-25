@@ -29,14 +29,4 @@
     <price>a</price>
     <isSold>false</isSold>
   </listing>
-  <listing>
-    <itemNumber>0005</itemNumber>
-    <category>seedlings</category>
-    <description>Description coming soon.</description>
-    <price>0</price>
-    <isSold>true</isSold>
-    <imageSmall>static/images/small_0005.png</imageSmall>
-    <imageMedium>static/images/medium_0005.png</imageMedium>
-    <imageBig>static/images/big_0005.png</imageBig>
-  </listing>
 </listings>
