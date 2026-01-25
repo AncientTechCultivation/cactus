@@ -87,7 +87,7 @@ jobs:
         run: |
           git add $xml_path
           for size in small medium big; do
-            image_path="static/images/${size}_${item_number}.png"
+            image_path="static/images/${size}_${{ inputs.item_number }}.png"
             if [ ! -e "$image_path" ]; then
               git rm "$image_path"
             fi
