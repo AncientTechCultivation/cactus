@@ -30,16 +30,6 @@
     <isSold>false</isSold>
   </listing>
   <listing>
-    <itemNumber>0001</itemNumber>
-    <category>seedlings</category>
-    <description/>
-    <price>0</price>
-    <isSold>true</isSold>
-    <imageSmall>static/images/small_0001.png</imageSmall>
-    <imageMedium>static/images/medium_0001.png</imageMedium>
-    <imageBig>static/images/big_0001.png</imageBig>
-  </listing>
-  <listing>
     <itemNumber>0005</itemNumber>
     <category>seedlings</category>
     <description>Description coming soon.</description>
