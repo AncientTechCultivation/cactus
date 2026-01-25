@@ -53,7 +53,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Action"
-          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/ambrose-s/cactus-website.git
+          git remote set-url origin https://x-access-token:${{ secrets.ACCESS_TOKEN }}@github.com/AncientTechCultivation/cactus.git
           git pull origin main
       
       - name: Install XMLstarlet
