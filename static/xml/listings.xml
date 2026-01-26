@@ -29,4 +29,11 @@
     <price>a</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>apple apple</itemNumber>
+    <category>seedlings</category>
+    <description>0</description>
+    <price>0.0</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
