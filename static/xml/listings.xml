@@ -22,25 +22,4 @@
     <imageMedium>static/images/xtratest1024.jpg</imageMedium>
     <imageBig>static/images/xtratest1920.jpg</imageBig>
   </listing>
-  <listing>
-    <itemNumber/>
-    <category>other</category>
-    <description/>
-    <price>a</price>
-    <isSold>false</isSold>
-  </listing>
-  <listing>
-    <itemNumber>apple apple</itemNumber>
-    <category>seedlings</category>
-    <description>0</description>
-    <price>0.0</price>
-    <isSold>false</isSold>
-  </listing>
-  <listing>
-    <itemNumber>/</itemNumber>
-    <category>seedlings</category>
-    <description>Description coming soon.</description>
-    <price>0.0</price>
-    <isSold>false</isSold>
-  </listing>
 </listings>
