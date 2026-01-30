@@ -91,6 +91,8 @@ h1 {
   flex-direction: row;
   font-size: medium;
   padding-top: 15px;
+  padding-right: 5px;
+  white-space: pre;
 }
 
 h1:after{
