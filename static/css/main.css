@@ -207,6 +207,7 @@ h1:after{
 
 #about_contents > img {
   max-width: 45%;
+  max-height: 425px;
 }
 
 
