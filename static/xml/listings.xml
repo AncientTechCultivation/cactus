@@ -27,7 +27,7 @@
     <category>other</category>
     <description>HYSH Black Long Sleeve. Gildan Cotton. Printed in the United States.</description>
     <price>15</price>
-    <isSold>false</isSold>
+    <isSold>true</isSold>
     <imageSmall>static/images/small_5001.png</imageSmall>
     <imageMedium>static/images/medium_5001.png</imageMedium>
     <imageBig>static/images/big_5001.png</imageBig>
