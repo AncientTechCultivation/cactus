@@ -24,6 +24,16 @@
   </listing>
 
   <listing>
+    <itemNumber>1051</itemNumber>
+    <category>seedlings</category>
+    <description>Huancambaba X Landfill. 1.5-2 inches tall. Started indoors under LED lighting. Organic inputs.</description>
+    <price>2</price>
+    <isSold>true</isSold>
+    <imageSmall>static/images/xtratest640.jpg</imageSmall>
+    <imageMedium>static/images/xtratest1024.jpg</imageMedium>
+    <imageBig>static/images/xtratest1920.jpg</imageBig>
+  </listing>
+  <listing>
     <itemNumber>1022</itemNumber>
     <category>seedlings</category>
     <description>Huancambaba X Landfill. 1.5-2 inches tall. Started indoors under LED lighting. Organic inputs.</description>
