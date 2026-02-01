@@ -22,14 +22,4 @@
     <imageMedium>static/images/xtratest1024.jpg</imageMedium>
     <imageBig>static/images/xtratest1920.jpg</imageBig>
   </listing>
-  <listing>
-    <itemNumber>5001</itemNumber>
-    <category>other</category>
-    <description>HYSH Black Long Sleeve. Gildan Cotton. Printed in the United States.</description>
-    <price>15</price>
-    <isSold>true</isSold>
-    <imageSmall>static/images/small_5001.png</imageSmall>
-    <imageMedium>static/images/medium_5001.png</imageMedium>
-    <imageBig>static/images/big_5001.png</imageBig>
-  </listing>
 </listings>
