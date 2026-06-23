@@ -43,4 +43,11 @@
     <price>15</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>S226</itemNumber>
+    <category>seedlings</category>
+    <description>Oscar x Landfill. 8 x 2.25 inches. Seedling. Full sun grown. Ships bareroot. </description>
+    <price>15</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
