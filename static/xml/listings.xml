@@ -85,4 +85,11 @@
     <price>35</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>C232</itemNumber>
+    <category>clones</category>
+    <description>TBMA. 13 inches and 7 inches. Grown full sun. Healed cut and slug damage. Ships bareroot. </description>
+    <price>35</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
