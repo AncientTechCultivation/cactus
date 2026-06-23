@@ -57,4 +57,11 @@
     <price>25</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>S228</itemNumber>
+    <category>seedlings</category>
+    <description>Oscar x Landfill. 4.5 x 4 inches. Seedling. 2 dicots, 1 stump. Full sun grown. Ships bareroot. </description>
+    <price>25</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
