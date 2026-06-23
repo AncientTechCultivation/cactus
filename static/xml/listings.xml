@@ -38,6 +38,9 @@
     <description>Zed Scopulicola x Flying Saucer. Scion 3 x 3.5 inches, Rootstock 10.5 x 3.5 inches. Seedling grafted on PC. Greenhouse grown. Ships bareroot. </description>
     <price>25</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_G224.png</imageSmall>
+    <imageMedium>static/images/medium_G224.png</imageMedium>
+    <imageBig>static/images/big_G224.png</imageBig>
   </listing>
   <listing>
     <itemNumber>S225</itemNumber>
