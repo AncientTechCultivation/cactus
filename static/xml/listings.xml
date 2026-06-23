@@ -87,6 +87,9 @@
     <description>Althea. 4.5 x 3 inches and 3 x 2.5 inches. Grafted to Sun Goddess. Full sun grown. Ships bareroot. </description>
     <price>35</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_G231.png</imageSmall>
+    <imageMedium>static/images/medium_G231.png</imageMedium>
+    <imageBig>static/images/big_G231.png</imageBig>
   </listing>
   <listing>
     <itemNumber>C232</itemNumber>
