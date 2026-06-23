@@ -50,4 +50,11 @@
     <price>15</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>S227</itemNumber>
+    <category>seedlings</category>
+    <description>Oscar x Landfill. 3.5 x 4 inches. Seedling. Crested. Full sun grown. Ships bareroot. </description>
+    <price>25</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
