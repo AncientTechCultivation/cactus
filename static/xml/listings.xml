@@ -101,5 +101,8 @@
     <description>Frankie x Sharxx. 14 x 4.5 inches. Degraft from LER x Clyde. Full sun grown. Dusted with rooting hormone and sulfur. Cut to order, so you can request no rooting hormone. </description>
     <price>70</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_G233.png</imageSmall>
+    <imageMedium>static/images/medium_G233.png</imageMedium>
+    <imageBig>static/images/big_G233.png</imageBig>
   </listing>
 </listings>
