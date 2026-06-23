@@ -22,4 +22,11 @@
     <imageMedium>static/images/xtratest1024.jpg</imageMedium>
     <imageBig>static/images/xtratest1920.jpg</imageBig>
   </listing>
+  <listing>
+    <itemNumber>S223</itemNumber>
+    <category>seedlings</category>
+    <description>BBG48.1540 x Althea. 6.75 x 2.5 inches. Seedling. Greenhouse grown. Ships bareroot. </description>
+    <price>15</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
