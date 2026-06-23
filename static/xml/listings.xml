@@ -78,4 +78,11 @@
     <price>20</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>G231</itemNumber>
+    <category>clones</category>
+    <description>Althea. 4.5 x 3 inches and 3 x 2.5 inches. Grafted to Sun Goddess. Full sun grown. Ships bareroot. </description>
+    <price>35</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
