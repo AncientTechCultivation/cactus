@@ -168,6 +168,9 @@
     <description>Sharxx x Althea. 8.72 x 3 inches. Degraft. Full sun grown. 8.75 x 3 inches.</description>
     <price>25</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_S238.png</imageSmall>
+    <imageMedium>static/images/medium_S238.png</imageMedium>
+    <imageBig>static/images/big_S238.png</imageBig>
   </listing>
   <listing>
     <itemNumber>C239</itemNumber>
