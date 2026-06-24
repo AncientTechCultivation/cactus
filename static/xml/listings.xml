@@ -24,7 +24,7 @@
   </listing>
   <listing>
     <itemNumber>G224</itemNumber>
-    <category>seedlings</category>
+    <category>mutated</category>
     <description>Zed Scopulicola x Flying Saucer. Scion 3 x 3.5 inches, Rootstock 10.5 x 3.5 inches. Seedling grafted on PC. Greenhouse grown. Ships bareroot. </description>
     <price>25</price>
     <isSold>true</isSold>
@@ -54,7 +54,7 @@
   </listing>
   <listing>
     <itemNumber>S227</itemNumber>
-    <category>seedlings</category>
+    <category>mutated</category>
     <description>Oscar x Landfill. 3.5 x 4 inches. Seedling. Crested. Full sun grown. Ships bareroot. </description>
     <price>25</price>
     <isSold>true</isSold>
@@ -64,7 +64,7 @@
   </listing>
   <listing>
     <itemNumber>S228</itemNumber>
-    <category>seedlings</category>
+    <category>mutated</category>
     <description>Oscar x Landfill. 4.5 x 4 inches. Seedling. 2 dicots, 1 stump. Full sun grown. Ships bareroot. </description>
     <price>25</price>
     <isSold>false</isSold>
@@ -74,7 +74,7 @@
   </listing>
   <listing>
     <itemNumber>G229</itemNumber>
-    <category>seedlings</category>
+    <category>mutated</category>
     <description>Zed Scopulicola x Flying Saucer. Scion 1.75 x 1.5 inches, Rootstock 10 x 2.5 inches. Seedling grafted on PC. Greenhouse grown. Ships bareroot. </description>
     <price>20</price>
     <isSold>false</isSold>
@@ -84,7 +84,7 @@
   </listing>
   <listing>
     <itemNumber>G230</itemNumber>
-    <category>seedlings</category>
+    <category>mutated</category>
     <description>Zed Scopulicola x Flying Saucer. Scion 2.5 x 2.5 inches, Rootstock 9 x 3.25 inches. Seedling grafted on PC. Full sun grown. Ships bareroot. </description>
     <price>20</price>
     <isSold>false</isSold>
