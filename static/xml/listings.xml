@@ -47,7 +47,7 @@
     <category>seedlings</category>
     <description>Oscar x Landfill. 8 x 2.25 inches. Seedling. Full sun grown. Ships bareroot. </description>
     <price>15</price>
-    <isSold>false</isSold>
+    <isSold>true</isSold>
     <imageSmall>static/images/small_S226.png</imageSmall>
     <imageMedium>static/images/medium_S226.png</imageMedium>
     <imageBig>static/images/big_S226.png</imageBig>
