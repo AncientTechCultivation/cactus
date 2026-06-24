@@ -192,4 +192,11 @@
     <imageMedium>static/images/medium_S240.png</imageMedium>
     <imageBig>static/images/big_S240.png</imageBig>
   </listing>
+  <listing>
+    <itemNumber>S241</itemNumber>
+    <category>mutated</category>
+    <description>Oscar x Landfill. 3.5 x 4 inches. Grown full sun. Ships bareroot.</description>
+    <price>25</price>
+    <isSold>true</isSold>
+  </listing>
 </listings>
