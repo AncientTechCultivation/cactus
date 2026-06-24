@@ -188,5 +188,8 @@
     <description>Zevallos. 16.5 x 3.5 inches. Pup. Never grafted. Seeds from Chavin Herbalist. Full sun grown. Healed snail scar. Dusted with rooting hormone and sulfur. Cut to order.</description>
     <price>40</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_S240.png</imageSmall>
+    <imageMedium>static/images/medium_S240.png</imageMedium>
+    <imageBig>static/images/big_S240.png</imageBig>
   </listing>
 </listings>
