@@ -178,6 +178,9 @@
     <description>Ichoca. 10.5 x 3.5 inches. Degraft. Clone from Chavin Herbalist. Full sun grown. Dusted with rooting hormone and sulfur. Cut to order.</description>
     <price>45</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_C239.png</imageSmall>
+    <imageMedium>static/images/medium_C239.png</imageMedium>
+    <imageBig>static/images/big_C239.png</imageBig>
   </listing>
   <listing>
     <itemNumber>S240</itemNumber>
