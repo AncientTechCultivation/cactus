@@ -136,4 +136,11 @@
     <price>50</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>S236</itemNumber>
+    <category>seedlings</category>
+    <description>Huanito. 10.5 x 3 inches. Degraft. Seeds from Chavin Herbalist. Full sun grown. Dusted with rooting hormone and sulfur. Cut to order.</description>
+    <price>40</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
