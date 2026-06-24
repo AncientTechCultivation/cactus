@@ -17,7 +17,7 @@
     <category>seedlings</category>
     <description>BBG48.1540 x Althea. 6.75 x 2.5 inches. Seedling. Greenhouse grown. Ships bareroot. </description>
     <price>15</price>
-    <isSold>false</isSold>
+    <isSold>true</isSold>
     <imageSmall>static/images/small_S223.png</imageSmall>
     <imageMedium>static/images/medium_S223.png</imageMedium>
     <imageBig>static/images/big_S223.png</imageBig>
