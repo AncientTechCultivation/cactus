@@ -150,4 +150,11 @@
     <price>20</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>S238</itemNumber>
+    <category>seedlings</category>
+    <description>Sharxx x Althea. 8.72 x 3 inches. Degraft. Full sun grown. 8.75 x 3 inches.</description>
+    <price>25</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
