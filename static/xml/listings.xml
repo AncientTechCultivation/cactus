@@ -238,5 +238,8 @@
     <description>TPM x Tom Juuls Giant. 23 x 3.75. Tip. Full sun grown. Dusted with rooting hormone and sulfur. Cut to order. </description>
     <price>35</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_S245.png</imageSmall>
+    <imageMedium>static/images/medium_S245.png</imageMedium>
+    <imageBig>static/images/big_S245.png</imageBig>
   </listing>
 </listings>
