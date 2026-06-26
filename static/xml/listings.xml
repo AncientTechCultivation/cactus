@@ -209,4 +209,11 @@
     <price>40</price>
     <isSold>true</isSold>
   </listing>
+  <listing>
+    <itemNumber>S243</itemNumber>
+    <category>seedlings</category>
+    <description>Frankie x Sharxx. 12 x 3.5. Degraft. Full sun grown. Dusted with rooting hormone and sulfur.</description>
+    <price>25</price>
+    <isSold>true</isSold>
+  </listing>
 </listings>
