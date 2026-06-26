@@ -208,6 +208,9 @@
     <description>Frankie x Althea. 12 x 3.75 inches . Degraft. Full sun grown. Few battle scars. Dusted with rooting hormone and sulfur. Cut to order. </description>
     <price>40</price>
     <isSold>true</isSold>
+    <imageSmall>static/images/small_S242.png</imageSmall>
+    <imageMedium>static/images/medium_S242.png</imageMedium>
+    <imageBig>static/images/big_S242.png</imageBig>
   </listing>
   <listing>
     <itemNumber>S243</itemNumber>
