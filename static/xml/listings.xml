@@ -223,4 +223,11 @@
     <price>30</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>S245</itemNumber>
+    <category>seedlings</category>
+    <description>TPM x Tom Juuls Giant. 23 x 3.75. Tip. Full sun grown. Dusted with rooting hormone and sulfur. Cut to order. </description>
+    <price>35</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
