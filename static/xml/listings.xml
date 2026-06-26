@@ -218,6 +218,9 @@
     <description>Frankie x Sharxx. 12 x 3.5. Degraft. Full sun grown. Dusted with rooting hormone and sulfur.</description>
     <price>25</price>
     <isSold>true</isSold>
+    <imageSmall>static/images/small_S243.png</imageSmall>
+    <imageMedium>static/images/medium_S243.png</imageMedium>
+    <imageBig>static/images/big_S243.png</imageBig>
   </listing>
   <listing>
     <itemNumber>S244</itemNumber>
