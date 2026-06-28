@@ -308,6 +308,9 @@
     <description>Megalodon. 14 x 3.75 inches. Tip. Not grafted. Full sun grown. Few healed scars. Dusted with rooting hormone and sulfur. Cut to order.</description>
     <price>80</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_C252.png</imageSmall>
+    <imageMedium>static/images/medium_C252.png</imageMedium>
+    <imageBig>static/images/big_C252.png</imageBig>
   </listing>
   <listing>
     <itemNumber>C253</itemNumber>
