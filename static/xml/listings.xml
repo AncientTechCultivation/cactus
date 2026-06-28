@@ -288,6 +288,9 @@
     <description>Ikaros DNA. 12.5 x 3.75 inches. Degraft. Full sun grown. Dusted with rooting hormone and sulfur. Cut to order. </description>
     <price>35</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_G250.png</imageSmall>
+    <imageMedium>static/images/medium_G250.png</imageMedium>
+    <imageBig>static/images/big_G250.png</imageBig>
   </listing>
   <listing>
     <itemNumber>G251</itemNumber>
