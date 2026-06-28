@@ -268,6 +268,9 @@
     <description>Sharxx x Althea. 10 x 3.75 inches. Degraft. Full sun grown. Couple of healed scars. Dusted with rooting hormone and sulfur and sulfur. Cut to order. </description>
     <price>35</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_G248.png</imageSmall>
+    <imageMedium>static/images/medium_G248.png</imageMedium>
+    <imageBig>static/images/big_G248.png</imageBig>
   </listing>
   <listing>
     <itemNumber>G249</itemNumber>
