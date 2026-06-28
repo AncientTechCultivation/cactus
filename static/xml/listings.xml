@@ -270,4 +270,11 @@
     <price>45</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>G250</itemNumber>
+    <category>seedlings</category>
+    <description>Ikaros DNA. 12.5 x 3.75 inches. Degraft. Full sun grown. Dusted with rooting hormone and sulfur. Cut to order. </description>
+    <price>35</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
