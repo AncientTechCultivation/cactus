@@ -284,4 +284,11 @@
     <price>25</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>C252</itemNumber>
+    <category>clones</category>
+    <description>Megalodon. 14 x 3.75 inches. Tip. Not grafted. Full sun grown. Few healed scars. Dusted with rooting hormone and sulfur. Cut to order.</description>
+    <price>80</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
