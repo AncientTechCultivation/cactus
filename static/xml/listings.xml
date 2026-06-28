@@ -263,4 +263,11 @@
     <price>35</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>G249</itemNumber>
+    <category>seedlings</category>
+    <description>BBG48.1540. 9 x 3.75 and 6.5 x 3.5 inches. Degraft. Full sun grown. Dusted with rooting hormone and sulfur. Cut to order. </description>
+    <price>45</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
