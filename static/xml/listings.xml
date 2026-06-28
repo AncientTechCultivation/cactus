@@ -242,4 +242,11 @@
     <imageMedium>static/images/medium_S245.png</imageMedium>
     <imageBig>static/images/big_S245.png</imageBig>
   </listing>
+  <listing>
+    <itemNumber>G246</itemNumber>
+    <category>seedlings</category>
+    <description>Sharxx x Althea. 8 x 3.5 inches. Degraft. Full sun grown. Few healed scars. Dusted with rooting hormone and sulfur. Cut to order. </description>
+    <price>25</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
