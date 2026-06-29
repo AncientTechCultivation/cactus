@@ -107,7 +107,7 @@
     <category>clones</category>
     <description>TBMA. 13 inches and 7 inches. Grown full sun. Healed cut and slug damage. Ships bareroot. </description>
     <price>35</price>
-    <isSold>false</isSold>
+    <isSold>true</isSold>
     <imageSmall>static/images/small_C232.png</imageSmall>
     <imageMedium>static/images/medium_C232.png</imageMedium>
     <imageBig>static/images/big_C232.png</imageBig>
