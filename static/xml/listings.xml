@@ -369,4 +369,11 @@
     <price>2.5</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>O258</itemNumber>
+    <category>other</category>
+    <description>Have You Seen Him Grateful Dead Jerry Garcia sticker. 4 x 3.5 inches.</description>
+    <price>2</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
