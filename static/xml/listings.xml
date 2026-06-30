@@ -388,5 +388,8 @@
     <description>Have You Seen Him Grateful Dead Jerry Garcia koozie. For 12 oz cans. Neon Green.</description>
     <price>2.5</price>
     <isSold>false</isSold>
+    <imageSmall>static/images/small_O260.png</imageSmall>
+    <imageMedium>static/images/medium_O260.png</imageMedium>
+    <imageBig>static/images/big_O260.png</imageBig>
   </listing>
 </listings>
