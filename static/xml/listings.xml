@@ -376,4 +376,11 @@
     <price>2</price>
     <isSold>false</isSold>
   </listing>
+  <listing>
+    <itemNumber>O260</itemNumber>
+    <category>other</category>
+    <description>Collegiate Fennario Wolf Grateful Dead sticker. 3.5 x 3 inches.</description>
+    <price>2</price>
+    <isSold>false</isSold>
+  </listing>
 </listings>
