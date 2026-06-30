@@ -317,7 +317,7 @@
     <category>clones</category>
     <description>Megalodon. 7 x 3.5 inches. Mid cut. Not grafted. Full sun grown. Dusted with rooting hormone and sulfur. </description>
     <price>35</price>
-    <isSold>false</isSold>
+    <isSold>true</isSold>
     <imageSmall>static/images/small_C253.png</imageSmall>
     <imageMedium>static/images/medium_C253.png</imageMedium>
     <imageBig>static/images/big_C253.png</imageBig>
