@@ -327,7 +327,7 @@
     <category>mutated</category>
     <description>Oscar x Landfill. 5.5 x 4 inches. Greenhouse grown with some full sun exposure. Ships bareroot. </description>
     <price>40</price>
-    <isSold>false</isSold>
+    <isSold>true</isSold>
     <imageSmall>static/images/small_S254.png</imageSmall>
     <imageMedium>static/images/medium_S254.png</imageMedium>
     <imageBig>static/images/big_S254.png</imageBig>
