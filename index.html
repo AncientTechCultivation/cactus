@@ -92,7 +92,7 @@
         <section id="about">
             <h1>About Us </h1>
             <div id="about_contents">
-                <img src="static/images/medium_about_portrait.png" srcset="static/images/small_about_portrait.png 640w, static/images/medium_about_portrait.png 1024w, static/images/big_about_portrait.png 1920w" size="(width < 820px) 45vw, 25vw" />
+                <img loading="lazy" src="static/images/medium_about_portrait.png" srcset="static/images/small_about_portrait.png 640w, static/images/medium_about_portrait.png 1024w, static/images/big_about_portrait.png 1920w" size="(width < 820px) 45vw, 25vw" />
                 <p> We are a small cactus nursery located in coastal Humboldt County, California in zone 9b. <br /> <br />
                     We love growing cactus, food and other plants with organic inputs and have doing doing so for a few decades. <br /> <br />
                     We are happy to offer our wide collection of Trichocereus, other plants and seeds. <br /> <br />
@@ -224,7 +224,8 @@
                     listingImage.setAttribute('class', 'listing_image');
                     listingImage.setAttribute('src', `${listing.imageMedium}`);
                     listingImage.setAttribute('srcset', `${listing.imageSmall} 640w, ${listing.imageMedium} 1024w, ${listing.imageBig} 1920w`);
-                    listingImage.setAttribute('size', '(width < 650px) 50vw, (width < 820px) 33vw, 25vw')
+                    listingImage.setAttribute('size', '(width < 650px) 50vw, (width < 820px) 33vw, 25vw');
+                    listingImage.setAttribute('loading', 'lazy');
                     listingDiv.appendChild(listingImage);
 
                     const listingDescription = document.createElement("p");
