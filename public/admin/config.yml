@@ -1,0 +1,22 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+backend:
+  name: github
+  repo: AncientTechCultivation/cactus
+
+media_folder: /src/images
+# omitting public_folder
+
+collections:
+  - name: listings
+    label: Listings
+    label_singular: Listing
+    file: /data/listings.json
+    identifier_field: itemNumber
+    fields:
+      - { label: Item Number, name: itemNumber, widget: string, unique: true }
+      - { label: Category, name: category, widget: select, options: [ seedlings, clones, mutated, other ] }
+      - { label: Description, name: description, widget: text }
+      - { label: Price, name: price, widget: number, min: 0 }
+      - { label: Image, name: image, widget: image, media_libraries: { all: { transformations: { raster_image: { format: webp, quality: 85, width: 1920, height: 1920 }}}} }
+      - { label: Is Sold?, name: isSold, widget: boolean, default: false }
