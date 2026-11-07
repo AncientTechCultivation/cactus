@@ -26,7 +26,7 @@ const image = images[listing.image];
 
 <div class="listing">
     <p class="listing_number">{listing.itemNumber}</p>
-    { image && <Image class="listing_image" src={image.default} loading="lazy" alt="" /> }
+    { image && <Image class="listing_image" src={image.default} alt="" /> }
     <p class="listing_description">{listing.description}</p>
     <div class="listing_price_container">
         <p class="listing_price">{formattedPrice}</p>
