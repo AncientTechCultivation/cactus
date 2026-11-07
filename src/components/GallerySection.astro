@@ -1,0 +1,29 @@
+---
+/* expects listings to be an array of objects with the following attributes:
+ * itemNumber: string
+ * description: string
+ * image: image
+ * price: number
+ * isSold: boolean
+*/ 
+import listings from '@/../data/listings.json'; // this path is insane
+import GalleryItem from './GalleryItem.astro';
+const { title, id } = Astro.props;
+
+// only display listings whose category matches this section's ID
+// sold listings should only show in the sold section regardless of their category
+const filteredListings = listings.filter((listing) => 
+    id == "sold" 
+    ? listing.isSold == true
+    : listing.category == id && listing.isSold != true
+);
+---
+
+<section id={id}>
+            <h1>{title}</h1>
+            <div class="grid">
+                {filteredListings.map((listing) => (
+                    <GalleryItem listing={listing} />
+                ))}
+            </div>
+</section>

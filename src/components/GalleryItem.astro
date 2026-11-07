@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+/* expects listing to be an object with the following attributes:
+ * itemNumber: string
+ * description: string
+ * image: image
+ * price: number
+ * isSold: boolean
+*/ 
+const { listing } = Astro.props;
+
+const formattedPrice = new Intl.NumberFormat("US", {style: "currency", currency: "USD", currencyDisplay: "narrowSymbol"}).format(`${listing.price}`);
+
+/* 
+ * for information on dynamically importing images, refer to this article:
+ * https://docs.astro.build/en/recipes/dynamically-importing-images/ 
+ * 
+ * deviating from the recipe to import eagerly, so the images are imported as objects at build time
+ * to avoid 'is not a function' errors
+*/
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{webp,jpeg,jpg,png,gif}', { eager: true });
+const image = images[listing.image];
+---
+
+<div class="listing">
+    <p class="listing_number">{listing.itemNumber}</p>
+    { image && <Image class="listing_image" src={image.default} loading="lazy" alt="" /> }
+    <p class="listing_description">{listing.description}</p>
+    <div class="listing_price_container">
+        <p class="listing_price">{formattedPrice}</p>
+        {listing.isSold && <p class="listing_price_cover">SOLD</p>}
+    </div>
+</div>
