@@ -302,5 +302,13 @@
     "price": "2.5",
     "isSold": false,
     "image": "/src/images/big_O260.png"
+  },
+  {
+    "itemNumber": "phonetest",
+    "category": "seedlings",
+    "description": "This is a test",
+    "price": 1,
+    "image": "/src/images/greenmm.webp",
+    "isSold": false
   }
 ]
