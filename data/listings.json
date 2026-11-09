@@ -1,0 +1,10 @@
+[
+  {
+    "itemNumber": "TEST",
+    "category": "seedlings",
+    "description": "THIS IS A TEST",
+    "price": 0,
+    "image": "/src/images/greenmm.webp",
+    "isSold": false
+  }
+]
