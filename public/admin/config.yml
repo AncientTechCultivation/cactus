@@ -3,6 +3,7 @@
 backend:
   name: github
   repo: AncientTechCultivation/cactus
+  branch: main
 
 media_folder: /src/images
 # omitting public_folder
