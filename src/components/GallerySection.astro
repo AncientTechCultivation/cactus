@@ -8,6 +8,7 @@
 */ 
 import listings from '@/../data/listings.json'; // this path is insane
 import GalleryItem from './GalleryItem.astro';
+import Section from './Section.astro';
 const { title, id } = Astro.props;
 
 // only display listings whose category matches this section's ID
@@ -19,11 +20,10 @@ const filteredListings = listings.filter((listing) =>
 );
 ---
 
-<section id={id}>
-            <h1>{title}</h1>
+<Section title={title} id={id}>
             <div class="grid">
                 {filteredListings.map((listing) => (
                     <GalleryItem listing={listing} />
                 ))}
             </div>
-</section>
+</Section>
