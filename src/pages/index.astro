@@ -1,6 +1,10 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import GallerySection from "@/components/GallerySection.astro";
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import GallerySection from '@/components/GallerySection.astro';
+import aboutPortrait from '@/assets/about_portrait.png';
+import instagramIcon from '@/assets/instagram_icon.png';
+import redditIcon from '@/assets/reddit_icon.png';
 ---
 
 <BaseLayout>
@@ -47,7 +51,7 @@ import GallerySection from "@/components/GallerySection.astro";
         <section id="about">
             <h1>About Us </h1>
             <div id="about_contents">
-                <img loading="lazy" src="static/images/medium_about_portrait.png" srcset="static/images/small_about_portrait.png 640w, static/images/medium_about_portrait.png 1024w, static/images/big_about_portrait.png 1920w" sizes="(width < 820px) 45vw, 25vw" />
+                <Image src={aboutPortrait} alt="" />
                 <p> We are a small cactus nursery located in coastal Humboldt County, California in zone 9b. <br /> <br />
                     We love growing cactus, food and other plants with organic inputs and have doing doing so for a few decades. <br /> <br />
                     We are happy to offer our wide collection of Trichocereus, other plants and seeds. <br /> <br />
@@ -65,8 +69,8 @@ import GallerySection from "@/components/GallerySection.astro";
             </ul>
             <ul>
                 <li> <h2>Follow Us</h2> </li>
-                <li> <img src="static/images/instagram_icon.png" /> <a href="https://www.instagram.com/ancient_tech_/"> @Ancient_tech_ </a> </li>
-                <li> <img src="static/images/reddit_icon.png" /> <a href="https://www.reddit.com/user/Ancient_Tech_/"> u/Ancient_tech_ </a></li>
+                <li> <img src={instagramIcon.src} alt="" /> <a href="https://www.instagram.com/ancient_tech_/"> @Ancient_tech_ </a> </li>
+                <li> <img src={redditIcon.src} alt="" /> <a href="https://www.reddit.com/user/Ancient_Tech_/"> u/Ancient_tech_ </a></li>
             </ul>
         </div>
     </footer>
