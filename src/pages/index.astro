@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Section from '@/components/Section.astro';
+import GallerySection from '@/components/GallerySection.astro';
+import aboutPortrait from '@/assets/about_portrait.png';
+import instagramIcon from '@/assets/instagram_icon.png';
+import redditIcon from '@/assets/reddit_icon.png';
+---
+
+<BaseLayout>
+    <header>
+        <nav>
+            <ul>
+            <li> <a href="#seedlings">Seedlings</a> </li>
+            <l1> / </l1>
+            <li> <a href="#clones">Clones</a> </li>
+            <l1> / </l1>
+            <li> <a href="#mutated">Crested-Mutated</a> </li>
+            <l1> / </l1>
+            <li> <a href="#other">Other Product</a> </li>
+            <l1> / </l1>
+            <li> <a href="#sold">Sold</a> </li>
+            <l1> / </l1>
+            <li> <a href="#order_info">Order Info</a> </li>
+            <l1> / </l1>
+            <li> <a href="#about">About Us</a> </li>
+            <l1> / </l1>
+            <li> <a href="#footer">Contact</a> </li>
+            </ul>
+        </nav>
+
+        <p> You receive exact cactus shown. </p>
+    </header>
+
+    <main>
+        <GallerySection id="seedlings" title="Seedlings" />
+        <GallerySection id="clones" title="Clones" />
+        <GallerySection id="mutated" title="Crested and Mutated" />
+        <GallerySection id="other" title="Other Product" />
+        <GallerySection id="sold" title="Sold" />
+
+        <Section title="Order Information" id="order_info">
+            <div class="order_info_contents">
+                <h2> To place an Order: </h2>
+                <p> Email the <span id="bold">item numbers</span> of each item being ordered. <br />
+                    Please include your <span id="bold">name</span>, <span id="bold">ship-to address</span> and <span id="bold">payment method</span>: Cash, Venmo, Cashapp. </p>
+            </div>
+
+            <div class="order_info_contents">
+                <h2> Shipping: </h2>
+                <p> Orders will be shipped USPS Ground, unless UPS is cheaper. <br />
+                Faster shipping options are available at buyers request. </p>
+            </div>
+        </Section>
+
+        <Section title="About Us" id="about">
+            <div id="about_contents">
+                <Image src={aboutPortrait} widths={[640, 1024, aboutPortrait.width]} sizes={`(max-width: 820px) 640px, (max-width: 1920px) 1024px, ${aboutPortrait.width}px`} alt="" />
+                <p> We are a small cactus nursery located in coastal Humboldt County, California in zone 9b. <br /> <br />
+                    We love growing cactus, food and other plants with organic inputs and have doing doing so for a few decades. <br /> <br />
+                    We are happy to offer our wide collection of Trichocereus, other plants and seeds. <br /> <br />
+                    Thank you for your support. </p> 
+            </div>
+        </Section>
+    </main>
+
+    <footer id="footer">
+        <h1></h1>
+        <div id="footer_contents">
+            <ul>
+                <li> <h2>Contact</h2> </li>
+                <li> <a href="mailto:ancienttechcultivation@gmail.com"> ancienttechcultivation@gmail.com </a></li>
+            </ul>
+            <ul>
+                <li> <h2>Follow Us</h2> </li>
+                <li> <img src={instagramIcon.src} alt="" /> <a href="https://www.instagram.com/ancient_tech_/"> @Ancient_tech_ </a> </li>
+                <li> <img src={redditIcon.src} alt="" /> <a href="https://www.reddit.com/user/Ancient_Tech_/"> u/Ancient_tech_ </a></li>
+            </ul>
+        </div>
+    </footer>
+</BaseLayout>
