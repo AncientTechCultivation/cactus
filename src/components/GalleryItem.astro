@@ -18,16 +18,16 @@ const formattedPrice = new Intl.NumberFormat("US", {style: "currency", currency:
  * https://docs.astro.build/en/recipes/dynamically-importing-images/ 
  * 
  * deviating from the recipe to import eagerly, so the images are imported as objects at build time
- * to avoid 'is not a function' errors
+ * to avoid 'is not a function' errors.
+ * additionally including a fallback image.
 */
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/*.{webp,jpeg,jpg,png,gif}', { eager: true });
-const image = images[listing.image];
+const image = images[listing.image] ? images[listing.image] : images['/src/images/missing_image.png'];
 ---
 
 <div class="listing">
     <p class="listing_number">{listing.itemNumber}</p>
-    { image && 
-    <Image class="listing_image" src={image.default} alt="" width="400" quality="mid" /> }
+    { image && <Image class="listing_image" src={image.default} alt="" width="400" quality="mid" /> }
     <p class="listing_description">{listing.description}</p>
     <div class="listing_price_container">
         <p class="listing_price">{formattedPrice}</p>
