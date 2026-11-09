@@ -208,6 +208,8 @@ h1:after{
 }
 
 #about_contents > img {
+  width: max-content;
+  height: max-content;
   max-width: 45%;
   max-height: 425px;
 }
